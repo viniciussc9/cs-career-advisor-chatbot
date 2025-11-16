@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+  <!-- Narrow HELP so it doesn't hijack other labels -->
+  <category>
+    <pattern>HELP</pattern>
+    <template>
+      Type <em>begin</em> to start, then choose either "Learn about top 5 careers" or "Pick a career for me."
+      <br/><button postback="BEGIN">Start</button>
+    </template>
+  </category>
+  <category>
+    <pattern>HELP *</pattern>
+    <template>
+      Type <em>begin</em> to start, then choose either "Learn about top 5 careers" or "Pick a career for me."
+      <br/><button postback="BEGIN">Start</button>
+    </template>
+  </category>
+</aiml>

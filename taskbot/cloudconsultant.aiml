@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+  <category>
+    <pattern>CLOUD CONSULTANT</pattern>
+    <template>
+      Cloud consultants familiarize companies with available cloud computing services, helping them to make decisions that benefit operations. Familiar with all technical aspects of cloud-based applications, cloud consultants maintain strong communicative roles. They are responsible for relaying the benefits of cloud services to individual companies in a way that nontechnical company representatives can understand.
+      <br/>Learn more: <a href="https://www.wgu.edu/career-guide/information-technology/cloud-consultant-career.html">Cloud consultant overview</a>
+      <br/><button postback="BEGIN">Go back</button>
+    </template>
+  </category>
+</aiml>

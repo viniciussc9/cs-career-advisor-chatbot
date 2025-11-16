@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+  <category>
+    <pattern>COMPUTER NETWORK ARCHITECT</pattern>
+    <template>
+      A computer network architect lays out the IT and communication infrastructures for a company. “Network architecture” refers to the communication protocols, transmission equipment, software, and other components that provide users with an uninterrupted connection to one another.
+      <br/>Learn more: <a href="https://www.wgu.edu/career-guide/information-technology/computer-network-architect-career.html">Network architect career guide</a>
+      <br/><button postback="BEGIN">Go back</button>
+    </template>
+  </category>
+</aiml>

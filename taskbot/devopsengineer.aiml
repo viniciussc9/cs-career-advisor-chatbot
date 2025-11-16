@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+  <category>
+    <pattern>DEVOPS ENGINEER</pattern>
+    <template>
+      A DevOps engineer is an IT professional who works with both development and operations teams to implement software releases and deployments. Their job is to ensure applications run smoothly and securely so users are happy with the product and continue using it. 
+      <br/>Learn more: <a href="https://www.wgu.edu/career-guide/information-technology/devops-engineer-career.html">DevOps engineer career guide</a>
+      <br/><button postback="BEGIN">Go back</button>
+    </template>
+  </category>
+</aiml>

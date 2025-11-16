@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+  <category>
+    <pattern>DATA SCIENTIST</pattern>
+    <template>
+      Data scientists use statistics, programming, and domain knowledge to extract insights and build predictive models.
+      <br/>Learn more: <a href="https://www.wgu.edu/career-guide/information-technology/data-scientist-career.html">Data scientist Overview</a>
+      <br/><button postback="BEGIN">Go back</button>
+    </template>
+  </category>
+</aiml>

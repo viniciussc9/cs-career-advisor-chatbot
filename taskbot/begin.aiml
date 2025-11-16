@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+  <!-- ===== Greetings so users aren't stuck ===== -->
+  <category>
+    <pattern>HI</pattern>
+    <template>Hello! Welcome to the student career services chat room. Please type "begin" to get started.</template>
+  </category>
+  <category>
+    <pattern>HELLO</pattern>
+    <template>Please type "begin" to get started.</template>
+  </category>
+
+  <!-- ===== Entry point ===== -->
+  <category>
+    <pattern>BEGIN</pattern>
+    <template>
+      Hi! I can recommend one of five computing careers.
+      <br/>Choose:
+      <button postback="TOP CAREERS">Learn about top 5 careers</button>
+      <button postback="GUIDED MATCH">Pick a career for me</button>
+    </template>
+  </category>
+
+  <!-- ===== Top careers (postback + label aliases) ===== -->
+  <category>
+    <pattern>TOP CAREERS</pattern>
+    <template>
+      Here are the five careers. Pick one to read more:
+      <button postback="DEVOPS ENGINEER">DevOps Engineer</button>
+      <button postback="VULNERABILITY RESEARCHER">Vulnerability Researcher</button>
+      <button postback="CLOUD CONSULTANT">Cloud Consultant</button>
+      <button postback="COMPUTER NETWORK ARCHITECT">Computer Network Architect</button>
+      <button postback="DATA SCIENTIST">Data Scientist</button>
+      <br/><button postback="BEGIN">Go back</button>
+    </template>
+  </category>
+  <category>
+    <pattern>LEARN ABOUT TOP 5 CAREERS</pattern>
+    <template><srai>TOP CAREERS</srai></template>
+  </category>
+  <category>
+    <pattern>LEARN ABOUT TOP FIVE CAREERS</pattern>
+    <template><srai>TOP CAREERS</srai></template>
+  </category>
+  <category>
+    <pattern>TOP 5 CAREERS</pattern>
+    <template><srai>TOP CAREERS</srai></template>
+  </category>
+
+  <!-- ===== Guided path selector (postback + label alias) ===== -->
+  <category>
+    <pattern>GUIDED MATCH</pattern>
+    <template>
+      Which area sounds most like you?
+      <!-- Three-way split so all five jobs are reachable -->
+      <button postback="Q INFRA">Infrastructure and Platforms</button>
+      <button postback="Q DATA">Data and Analysis</button>
+      <button postback="Q SECURITY">Security / Vulnerabilities</button>
+      <br/><button postback="BEGIN">Go back</button>
+    </template>
+  </category>
+  <category>
+    <pattern>PICK A CAREER FOR ME</pattern>
+    <template><srai>GUIDED MATCH</srai></template>
+  </category>
+  <category>
+    <pattern>PICK A CAREER</pattern>
+    <template><srai>GUIDED MATCH</srai></template>
+  </category>
+
+  <!-- ===== CANONICAL HANDLERS (no underscores) ===== -->
+  <category>
+    <pattern>Q INFRA</pattern>
+    <template>
+      Do you prefer advising clients or building and operating systems?
+      <button postback="CLOUD CONSULTANT">Advising clients</button>
+      <button postback="Q ENGINEER">Build and operate systems</button>
+      <br/><button postback="BEGIN">Go back</button>
+    </template>
+  </category>
+
+  <category>
+    <pattern>Q ENGINEER</pattern>
+    <template>
+      Which fits better?
+      <button postback="DEVOPS ENGINEER">Automation and pipelines</button>
+      <button postback="COMPUTER NETWORK ARCHITECT">Network design</button>
+      <br/><button postback="BEGIN">Go back</button>
+    </template>
+  </category>
+
+  <!-- DATA branch: real choice -->
+  <category>
+    <pattern>Q DATA</pattern>
+    <template>
+      In data-focused work, which appeals to you more?
+      <button postback="DATA SCIENTIST">Data modeling and statistics</button>
+      <button postback="VULNERABILITY RESEARCHER">Security research</button>
+      <br/><button postback="BEGIN">Go back</button>
+    </template>
+  </category>
+
+  <!-- SECURITY branch: two-question path -->
+  <category>
+    <pattern>Q SECURITY</pattern>
+    <template>
+      In security, which direction interests you more?
+      <button postback="Q OFFSEC">Offensive research (finding vulnerabilities)</button>
+      <button postback="Q DEFSEC">Defensive architecture (designing secure systems)</button>
+      <br/><button postback="BEGIN">Go back</button>
+    </template>
+  </category>
+
+  <category>
+    <pattern>Q OFFSEC</pattern>
+    <template>
+      Do you enjoy reverse engineering and writing proofs of concept?
+      <button postback="VULNERABILITY RESEARCHER">Yes — research and PoCs</button>
+      <button postback="CLOUD CONSULTANT">No — security consulting</button>
+      <br/><button postback="BEGIN">Go back</button>
+    </template>
+  </category>
+
+  <category>
+    <pattern>Q DEFSEC</pattern>
+    <template>
+      Which fits better for defensive work?
+      <button postback="COMPUTER NETWORK ARCHITECT">Network security design</button>
+      <button postback="DEVOPS ENGINEER">Secure automation and pipelines</button>
+      <br/><button postback="BEGIN">Go back</button>
+    </template>
+  </category>
+
+  <!-- ===== Label -> canonical mapping (UI sends labels, not postbacks) ===== -->
+  <!-- First-screen mappers -->
+  <category>
+    <pattern>DATA AND ANALYSIS</pattern>
+    <template><srai>Q DATA</srai></template>
+  </category>
+  <category>
+    <pattern>INFRASTRUCTURE AND PLATFORMS</pattern>
+    <template><srai>Q INFRA</srai></template>
+  </category>
+  <category>
+    <pattern>INFRASTRUCTURE / PLATFORMS</pattern>
+    <template><srai>Q INFRA</srai></template>
+  </category>
+  <category>
+    <pattern>SECURITY / VULNERABILITIES</pattern>
+    <template><srai>Q SECURITY</srai></template>
+  </category>
+  <category>
+    <pattern>SECURITY AND VULNERABILITIES</pattern>
+    <template><srai>Q SECURITY</srai></template>
+  </category>
+
+  <!-- Second-step label mappers -->
+  <category>
+    <pattern>ADVISING CLIENTS</pattern>
+    <template><srai>CLOUD CONSULTANT</srai></template>
+  </category>
+  <category>
+    <pattern>BUILD AND OPERATE SYSTEMS</pattern>
+    <template><srai>Q ENGINEER</srai></template>
+  </category>
+
+  <!-- Engineer step label mappers -->
+  <category>
+    <pattern>AUTOMATION AND PIPELINES</pattern>
+    <template><srai>DEVOPS ENGINEER</srai></template>
+  </category>
+  <category>
+    <pattern>NETWORK DESIGN</pattern>
+    <template><srai>COMPUTER NETWORK ARCHITECT</srai></template>
+  </category>
+
+  <!-- Security step label mappers (XML-safe; no &) -->
+  <category>
+    <pattern>OFFENSIVE RESEARCH *</pattern>
+    <template><srai>Q OFFSEC</srai></template>
+  </category>
+  <category>
+    <pattern>DEFENSIVE ARCHITECTURE *</pattern>
+    <template><srai>Q DEFSEC</srai></template>
+  </category>
+  <category>
+    <pattern>YES — RESEARCH AND POCS</pattern>
+    <template><srai>VULNERABILITY RESEARCHER</srai></template>
+  </category>
+  <category>
+    <pattern>NO — SECURITY CONSULTING</pattern>
+    <template><srai>CLOUD CONSULTANT</srai></template>
+  </category>
+  <category>
+    <pattern>NETWORK SECURITY DESIGN</pattern>
+    <template><srai>COMPUTER NETWORK ARCHITECT</srai></template>
+  </category>
+  <category>
+    <pattern>SECURE AUTOMATION AND PIPELINES</pattern>
+    <template><srai>DEVOPS ENGINEER</srai></template>
+  </category>
+
+  <!-- Exact label mappers for DATA choices to prevent loop -->
+  <category>
+    <pattern>DATA MODELING AND STATISTICS</pattern>
+    <template><srai>DATA SCIENTIST</srai></template>
+  </category>
+  <category>
+    <pattern>SECURITY RESEARCH</pattern>
+    <template><srai>VULNERABILITY RESEARCHER</srai></template>
+  </category>
+
+  <category>
+    <pattern>GO BACK</pattern>
+    <template><srai>BEGIN</srai></template>
+  </category>
+
+  <!-- ===== Safety: if anything SRAIs with underscores, catch and convert ===== -->
+  <category>
+    <pattern>Q UNDERSCORE DATA</pattern>
+    <template><srai>Q DATA</srai></template>
+  </category>
+  <category>
+    <pattern>Q UNDERSCORE INFRA</pattern>
+    <template><srai>Q INFRA</srai></template>
+  </category>
+  <category>
+    <pattern>Q UNDERSCORE ENGINEER</pattern>
+    <template><srai>Q ENGINEER</srai></template>
+  </category>
+
+<!-- Security label mappers for 'slash' normalization -->
+<category>
+  <pattern>SECURITY SLASH VULNERABILITIES</pattern>
+  <template><srai>Q SECURITY</srai></template>
+</category>
+<category>
+  <pattern>* SLASH VULNERABILITIES</pattern>
+  <template><srai>Q SECURITY</srai></template>
+</category>
+<category>
+  <pattern>SECURITY SLASH *</pattern>
+  <template><srai>Q SECURITY</srai></template>
+</category>
+
+</aiml>
